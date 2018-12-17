@@ -1,43 +1,63 @@
-<h1>Welcome! {{auth.user?.email}}</h1>
-<p> You are {{auth.isLoggedIn ? '':' not' }} logged in </p>
 
-<button type="submit" (click)= "logout()">Logout</button>
-
-<div class="info">
-  <form #reflectionForm="ngForm" (ngSubmit)="upload(reflectionForm.value)">
-    <label>Date</label>
-    <input
-    ngModel
-    name="date"
-    required
-    type="date"
-    placeholder="Date">
+  <h1>Welcome! {{auth.user?.email}}</h1>
+  <p> You are {{auth.isLoggedIn ? '':' not' }} logged in </p>
   
-    <label>Session Title</label>
-    <input
-    ngModel
-    name="title"
-    required
-    type="text"
-    placeholder="Enter title">
-
-    <label>Reflections</label>
-    <textarea
-    ngModel
-    name="reflection"
-    required
-    type="text"
-    ></textarea>
-
-    <label>Rating</label>
-    <input 
-    ngModel
-    name="rating"
-    type="number"
-    placeholder="rating">
-  
-  
-  </form>
+  <button type="submit" (click)= "logout()">Logout</button>
+  <div class="flex">
+  <div class="input">
+    <div class="info">
+      <form #reflectionForm="ngForm" (ngSubmit)="upload(reflectionForm.value)">
+        
+        <label>Date</label>
+        <input
+        ngModel
+        name="date"
+        required
+        type="date"
+        placeholder="Date">
+        
+        <label>Session Title</label>
+        <input
+        ngModel
+        name="title"
+        required
+        type="text"
+        placeholder="Enter title">
+        
+        <label>Reflections</label>
+        <textarea
+        ngModel
+        name="reflection"
+        required
+        type="text"
+        ></textarea>
+        
+        <label>Rating</label>
+        <input 
+        ngModel
+        name="rating"
+        type="number"
+        placeholder="rating">
+        
+        <button type="submit">Submit</button>
+        
+        
+      </form>
+    </div>
+    <div class="history-session"*ngFor = "let session of sessions | async">
+       
+        
+        <ul>
+            <button (click)= "delete(session)"><i class="fas fa-times"></i></button>
+        <li>{{ session.date }}</li> 
+        <li> {{ session.title }} </li>
+        <li> {{ session.reflection }} </li>
+        <li> {{ session.rating }} </li>
+        
+        </ul>
+      
+    </div>
+  </div>
 </div>
 
 

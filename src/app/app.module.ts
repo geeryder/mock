@@ -11,7 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { SessionInputComponent } from './session-input/session-input.component'
 
 const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SessionInputComponent
   ],
   imports: [
     BrowserModule,

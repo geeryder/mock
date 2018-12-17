@@ -1,0 +1,19 @@
+
+.flex{
+    display: flex
+    
+}
+
+.history-session{
+    border: 2px solid navy;
+    width: 200px;
+    display: flex;
+    flex:2;
+    flex-direction: column;
+    height: 200px;
+}
+
+.input{
+    display: flex;
+    flex-direction: row;
+}

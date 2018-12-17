@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../services/auth-service.service';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { SessionService, Isession, IsessionID } from '../services/session.service';
 
 @Component({
   selector: 'app-home',
@@ -10,20 +10,27 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   user;
-  items: Observable<any>
-  itemCollection: AngularFirestoreCollection;
+  sessions: Observable<Isession[]>;
 
   constructor( 
     private auth: AuthServiceService,
-    private afs: AngularFirestore
+    private sessionService: SessionService,
   ) { 
-
-  
+    this.sessions = this.sessionService.sessions;
   }
 
   logout(){
     this.auth.logout();
   }
+
+  upload(session: Isession){
+    this.sessionService.upload(session)
+    }
+
+  delete(session: IsessionID){
+    this.sessionService.delete(session);
+  }
+
 
   ngOnInit() {
   }

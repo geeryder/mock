@@ -1,14 +1,11 @@
 .info {
     display: inline-block;
-    border: 2px solid red;
+    border: 2px solid navy;
     width: 350px;
     text-align: center;
     padding: 30px;
 }
 
-small {
-    color: red;
-}
 input, textarea {
     display: block;
     margin: 0;
