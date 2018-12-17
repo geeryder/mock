@@ -7,7 +7,6 @@
     required
     ngModel
     name="name"
-    
     minlength="3"
     type="text"
     placeholder="Enter name"
@@ -17,6 +16,8 @@
   
     <label>Email Address</label>
     <input
+    ngModel
+    name="email"
     required
     email
     type="email"
@@ -24,17 +25,27 @@
 
     <label>Password</label>
     <input
+    ngModel
+    name="password"
     required
     password
     type="password"
     placeholder="Password">
 
-    <label>Confirm password</label>
+    <label *ngIf="errorMessage">
+        {{errorMessage}}
+    </label>
+
+    <!-- <label>Confirm password</label>
     <input
+    ngModel
+    name="confirmPassword"
     required
     password
     type="password"
-    placeholder="Confirm password">
+    placeholder="Confirm password"> -->
+    
+     <p> {{registerForm.value | json}} </p>
 
     <button type="submit">Register</button>
     <p>Already have an account? <a routerLink="/login">Log in</a></p>

@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+.info {
+    display: inline-block;
+    border: 2px solid red;
+    width: 350px;
+    text-align: center;
+    padding: 30px;
+}
+
+small {
+    color: red;
+}
+input, textarea {
+    display: block;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    max-width: 320px;
+}
+
+button {
+    display: block;
+}

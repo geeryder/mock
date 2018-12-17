@@ -1,3 +1,43 @@
-<p>
-  home works!
-</p>
+<h1>Welcome! {{auth.user?.email}}</h1>
+<p> You are {{auth.isLoggedIn ? '':' not' }} logged in </p>
+
+<button type="submit" (click)= "logout()">Logout</button>
+
+<div class="info">
+  <form #reflectionForm="ngForm" (ngSubmit)="upload(reflectionForm.value)">
+    <label>Date</label>
+    <input
+    ngModel
+    name="date"
+    required
+    type="date"
+    placeholder="Date">
+  
+    <label>Session Title</label>
+    <input
+    ngModel
+    name="title"
+    required
+    type="text"
+    placeholder="Enter title">
+
+    <label>Reflections</label>
+    <textarea
+    ngModel
+    name="reflection"
+    required
+    type="text"
+    ></textarea>
+
+    <label>Rating</label>
+    <input 
+    ngModel
+    name="rating"
+    type="number"
+    placeholder="rating">
+  
+  
+  </form>
+</div>
+
+
