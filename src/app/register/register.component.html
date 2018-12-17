@@ -1,0 +1,42 @@
+<h2>Register here </h2>
+<div class="info">
+<form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
+
+    <label>Name</label>
+    <input
+    required
+    ngModel
+    name="name"
+    
+    minlength="3"
+    type="text"
+    placeholder="Enter name"
+    >
+    <!-- <small> Name is required </small>
+    <small> Must be at least 3 characters </small> -->
+  
+    <label>Email Address</label>
+    <input
+    required
+    email
+    type="email"
+    placeholder="Email Address">
+
+    <label>Password</label>
+    <input
+    required
+    password
+    type="password"
+    placeholder="Password">
+
+    <label>Confirm password</label>
+    <input
+    required
+    password
+    type="password"
+    placeholder="Confirm password">
+
+    <button type="submit">Register</button>
+    <p>Already have an account? <a routerLink="/login">Log in</a></p>
+</form>
+</div>
