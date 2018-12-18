@@ -4,6 +4,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AuthGaurdService } from './services/auth-gaurd.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,7 +18,7 @@ import { SessionInputComponent } from './session-input/session-input.component'
 const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent , canActivate: [AuthGaurdService]}
 ]
 
 @NgModule({
@@ -37,10 +38,10 @@ const appRoutes: Routes = [
 
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [AuthGaurdService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

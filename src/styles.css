@@ -1,6 +1,25 @@
+*{
+    font-family: 'Thasadith', sans-serif;
+}
+
+p{
+    color: black;
+}
+
+h2{
+    text-align: center;
+    margin-top: 80px;
+}
+.layout{
+    display: flex;
+    justify-content: center;
+}
+
 .info {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
     border: 2px solid navy;
+    border-radius: 10px;
     width: 350px;
     text-align: center;
     padding: 30px;
@@ -16,5 +35,12 @@ input, textarea {
 }
 
 button {
-    display: block;
+    display: inline-block;
+    border-color: navy;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+button:hover{
+    cursor: pointer;
 }

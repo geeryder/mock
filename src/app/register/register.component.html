@@ -1,53 +1,58 @@
+<img scr="../assets/nology(1).gif">
 <h2>Register here </h2>
-<div class="info">
-<form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
 
-    <label>Name</label>
-    <input
-    required
-    ngModel
-    name="name"
-    minlength="3"
-    type="text"
-    placeholder="Enter name"
-    >
-    <!-- <small> Name is required </small>
-    <small> Must be at least 3 characters </small> -->
-  
-    <label>Email Address</label>
-    <input
-    ngModel
-    name="email"
-    required
-    email
-    type="email"
-    placeholder="Email Address">
-
-    <label>Password</label>
-    <input
-    ngModel
-    name="password"
-    required
-    password
-    type="password"
-    placeholder="Password">
-
-    <label *ngIf="errorMessage">
-        {{errorMessage}}
-    </label>
-
-    <!-- <label>Confirm password</label>
-    <input
-    ngModel
-    name="confirmPassword"
-    required
-    password
-    type="password"
-    placeholder="Confirm password"> -->
+<div class="layout">
     
-     <p> {{registerForm.value | json}} </p>
-
-    <button type="submit">Register</button>
-    <p>Already have an account? <a routerLink="/login">Log in</a></p>
-</form>
+    <div class="info">
+    <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
+    
+        <label>Name</label>
+        <input
+        required
+        ngModel
+        name="name"
+        minlength="3"
+        type="text"
+        placeholder="Enter name"
+        >
+        <!-- <small> Name is required </small>
+        <small> Must be at least 3 characters </small> -->
+      
+        <label>Email Address</label>
+        <input
+        ngModel
+        name="email"
+        required
+        email
+        type="email"
+        placeholder="Email Address">
+    
+        <label>Password</label>
+        <input
+        ngModel
+        name="password"
+        required
+        password
+        type="password"
+        placeholder="Password">
+    
+        <label *ngIf="errorMessage">
+            {{errorMessage}}
+        </label>
+    
+        <!-- <label>Confirm password</label>
+        <input
+        ngModel
+        name="confirmPassword"
+        required
+        password
+        type="password"
+        placeholder="Confirm password"> -->
+        
+         <!-- <p> {{registerForm.value | json}} </p> -->
+    
+        <button type="submit">Register</button>
+        <p>Already have an account? <a routerLink="/login">Log in</a></p>
+    </form>
+    </div>
 </div>

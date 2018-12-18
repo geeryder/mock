@@ -4,7 +4,7 @@
   
   <button type="submit" (click)= "logout()">Logout</button>
   <div class="flex">
-  <div class="input">
+  <!-- <div class="input"> -->
     <div class="info">
       <form #reflectionForm="ngForm" (ngSubmit)="upload(reflectionForm.value)">
         
@@ -44,18 +44,23 @@
         
       </form>
     </div>
-    <div class="history-session"*ngFor = "let session of sessions | async">
-       
-        
-        <ul>
-            <button (click)= "delete(session)"><i class="fas fa-times"></i></button>
-        <li>{{ session.date }}</li> 
-        <li> {{ session.title }} </li>
-        <li> {{ session.reflection }} </li>
-        <li> {{ session.rating }} </li>
-        
-        </ul>
-      
+    <div class="history-session">
+      <div *ngFor = "let session of sessions | async">
+    
+    
+    <div class="eachSession">
+    <button (click)= "delete(session)"><i class="fas fa-times"></i></button>
+    
+    <label>Revised</label>
+    <input type="checkbox">
+    <p> {{ session.date}}</p>
+    <p> {{ session.title }} </p>
+    <p> {{ session.reflection }} </p>
+    <p> {{ session.rating }} </p>
+    
+    </div>
+    
+    <!-- </div> -->
     </div>
   </div>
 </div>

@@ -1,42 +1,44 @@
 <h2>Login here </h2>
-<div class="info">
-<form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
-
-  
-    <label>Email Address</label>
-    <input
-    ngModel
-    name="email"
-    required
-    email
-    type="email"
-    placeholder="Email Address">
-
-    <label>Password</label>
-    <input
-    ngModel
-    name="password"
-    required
-    password
-    type="password"
-    placeholder="Password">
-
-    <label *ngIf="errorMessage">
-        {{errorMessage}}
-    </label>
-
-    <!-- <label>Confirm password</label>
-    <input
-    ngModel
-    name="confirmPassword"
-    required
-    password
-    type="password"
-    placeholder="Confirm password"> -->
+<div class="layout">
+    <div class="info">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
     
-     <p> {{loginForm.value | json}} </p>
-
-    <button type="submit">Login</button>
-    <p>Don't have an account? <a routerLink="/register">Resgister here</a></p>
-</form>
+      
+        <label>Email Address</label>
+        <input
+        ngModel
+        name="email"
+        required
+        email
+        type="email"
+        placeholder="Email Address">
+    
+        <label>Password</label>
+        <input
+        ngModel
+        name="password"
+        required
+        password
+        type="password"
+        placeholder="Password">
+    
+        <label *ngIf="errorMessage">
+            {{errorMessage}}
+        </label>
+    
+        <!-- <label>Confirm password</label>
+        <input
+        ngModel
+        name="confirmPassword"
+        required
+        password
+        type="password"
+        placeholder="Confirm password"> -->
+        
+         <p> {{loginForm.value | json}} </p>
+    
+        <button type="submit">Login</button>
+        <p>Don't have an account? <a routerLink="/register">Resgister here</a></p>
+    </form>
+</div>
 

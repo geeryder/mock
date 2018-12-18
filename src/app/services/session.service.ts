@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthServiceService } from './auth-service.service';
 
 
 export interface Isession {
@@ -9,14 +10,17 @@ export interface Isession {
   title:string;
   reflection:string;
   rating:number;
+  revised:boolean;
+  userID: string;
 }
  export interface IsessionID extends Isession {
-  id:string;
+  id: string;
  }
 
- export interface IsessionUpload extends Isession {
-   date: Date;
- }
+//  export interface IsessionUpload extends Isession {
+//    date: Date;
+//  }
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,14 +28,22 @@ export interface Isession {
 export class SessionService {
   sessionCollection: AngularFirestoreCollection<Isession>;
   sessions: Observable<Isession[]>;
+  user;
 
   constructor(
+    private auth: AuthServiceService,
     private afs:AngularFirestore) {
-      this.sessionCollection = this.afs.collection('sessions');
+      this.user = this.auth.user;
+      this.sessionCollection = this.afs.collection('sessions', (ref) => {
+        return ref.where('userID', '==', this.user.uid)
+        .orderBy('date', 'desc')
+      });
       
       this.sessions =this.sessionCollection.snapshotChanges()
       .pipe(map(this.includeCollectionID));
     }
+
+  
 
     includeCollectionID(docChangeAction){
       return docChangeAction.map((a) => {
@@ -47,7 +59,7 @@ export class SessionService {
 
     upload(session: Isession){
       // const payload :IsessionUpload = {date: new Date(), ...session};
-      return this.sessionCollection.add(session)
+      return this.sessionCollection.add({userID: this.user.uid, ...session})
       .catch(this.handleError);
     }
 
