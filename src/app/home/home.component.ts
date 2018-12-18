@@ -35,6 +35,10 @@ export class HomeComponent implements OnInit {
     this.sessionService.delete(session);
   }
 
+  update(session: IsessionID){
+    this.sessionService.update(session);
+  }
+
 
   ngOnInit() {
   }

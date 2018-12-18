@@ -10,7 +10,7 @@ export interface Isession {
   title:string;
   reflection:string;
   rating:number;
-  revised:boolean;
+  isRevised:boolean;
   userID: string;
 }
  export interface IsessionID extends Isession {
@@ -34,6 +34,7 @@ export class SessionService {
     private auth: AuthServiceService,
     private afs:AngularFirestore) {
       this.user = this.auth.user;
+
       this.sessionCollection = this.afs.collection('sessions', (ref) => {
         return ref.where('userID', '==', this.user.uid)
         .orderBy('date', 'desc')
@@ -42,8 +43,6 @@ export class SessionService {
       this.sessions =this.sessionCollection.snapshotChanges()
       .pipe(map(this.includeCollectionID));
     }
-
-  
 
     includeCollectionID(docChangeAction){
       return docChangeAction.map((a) => {
@@ -59,7 +58,12 @@ export class SessionService {
 
     upload(session: Isession){
       // const payload :IsessionUpload = {date: new Date(), ...session};
-      return this.sessionCollection.add({userID: this.user.uid, ...session})
+      const payload = {
+        userID: this.user.uid, 
+        isRevised: false,
+        ...session
+      };
+      return this.sessionCollection.add(payload)
       .catch(this.handleError);
     }
 
@@ -69,6 +73,11 @@ export class SessionService {
 
     }
 
+    update(session: IsessionID){
+      this.sessionCollection.doc(session.id).update({
+        isRevised: session.isRevised
+      });
+    }
 
 
 }

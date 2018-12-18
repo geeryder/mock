@@ -1,4 +1,4 @@
-
+<div class=" mainLayout">
   <h1>Welcome! {{auth.user?.email}}</h1>
   <p> You are {{auth.isLoggedIn ? '':' not' }} logged in </p>
   
@@ -35,6 +35,8 @@
         <label>Rating</label>
         <input 
         ngModel
+        minlength="0"
+        maxlength="5"
         name="rating"
         type="number"
         placeholder="rating">
@@ -50,9 +52,9 @@
     
     <div class="eachSession">
     <button (click)= "delete(session)"><i class="fas fa-times"></i></button>
-    
-    <label>Revised</label>
-    <input type="checkbox">
+<!--     
+    <label>Revised</label> -->
+    <input type="checkbox" [(ngModel)]="session.isRevised" (change)="update(session)">
     <p> {{ session.date}}</p>
     <p> {{ session.title }} </p>
     <p> {{ session.reflection }} </p>
@@ -64,5 +66,5 @@
     </div>
   </div>
 </div>
-
+</div>
 

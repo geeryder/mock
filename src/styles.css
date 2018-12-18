@@ -11,6 +11,7 @@ h2{
     margin-top: 80px;
 }
 .layout{
+    padding: 30px;
     display: flex;
     justify-content: center;
 }

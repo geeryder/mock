@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'mock';
 
   constructor(db: AngularFirestore) {
-    this.items = db.collection('items').valueChanges();
+    //this.items = db.collection('items').valueChanges();
 
   }
 }
